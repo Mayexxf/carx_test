@@ -24,6 +24,7 @@ public class UserController {
     }
 
     @PostMapping
+    @ResponseBody
     public ResponseEntity<String> receivingSyncData (@RequestBody UserDTO data, @RequestParam String uuid){
 
         userService.setJsonUser(data, uuid);

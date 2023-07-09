@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "activity")
@@ -20,12 +22,12 @@ public class Activity {
     private long id;
 
     @Column(name = "user_id")
-    private int user_id;
+    private UUID user_id;
 
     @Column(name = "activity")
     private int activity;
 
     @Column(name = "activity_date")
-    private Date activity_date;
+    private ZonedDateTime activity_date;
 
 }
