@@ -13,5 +13,5 @@ import java.io.Serializable;
 public class UserDTO implements Serializable {
 
     private int money;
-    private String  country;
+    private String country;
 }

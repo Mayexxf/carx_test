@@ -2,6 +2,7 @@ package com.example.carx_test.services;
 
 import com.example.carx_test.models.Activity;
 import com.example.carx_test.repositories.ActivityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ public class ActivityService {
 
     private final ActivityRepository activityRepository;
 
+    @Autowired
     public ActivityService(ActivityRepository activityRepository) {
         this.activityRepository = activityRepository;
     }
@@ -22,10 +24,13 @@ public class ActivityService {
         UUID uuid = UUID.fromString(user_id);
 
         Activity newActivityUser = new Activity();
-        activityRepository.findUser_idByActivity(uuid).ifPresent(activity -> {
-            newActivityUser.setUser_id(uuid);
+        activityRepository.findByUser(uuid)
+                .findFirst()
+                .ifPresent(activity -> {
+            newActivityUser.setUser(uuid);
             newActivityUser.setActivity(activityUser);
             newActivityUser.setActivity_date(ZonedDateTime.now());
         });
+        activityRepository.save(newActivityUser);
     }
 }

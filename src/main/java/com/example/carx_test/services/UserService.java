@@ -1,5 +1,6 @@
 package com.example.carx_test.services;
 
+import com.example.carx_test.models.User;
 import com.example.carx_test.models.UserDTO;
 import com.example.carx_test.repositories.UserRepositories;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 @Transactional
 public class UserService {
+
     private final UserRepositories userRepositories;
 
     @Autowired
@@ -21,8 +24,8 @@ public class UserService {
         this.userRepositories = userRepositories;
     }
 
-    public String getJsonUser(String uuid) {
 
+    public String getJsonUser(String uuid) {
         UUID uuidUser = UUID.fromString(uuid);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -43,5 +46,10 @@ public class UserService {
                 user.setUser_data(data);
                 userRepositories.save(user);
         });
+
     }
+
+//    public List<String> getUsersWithMaxMoneyByCountry(int limit){
+//        return userRepositories.findUsersWithMaxMoneyByCountry(limit);
+//    }
 }

@@ -15,7 +15,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@TypeDef(name = "json", typeClass = JsonBinaryType.class)
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class User {
 
     @Id
@@ -23,7 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @Column(name = "user_data", columnDefinition = "json")
-    @Type(type = "json")
+    @Column(name = "user_data", columnDefinition = "jsonb")
+    @Type(type = "jsonb")
     private UserDTO  user_data;
 }

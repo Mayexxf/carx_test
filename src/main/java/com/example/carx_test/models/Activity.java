@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
@@ -22,7 +21,7 @@ public class Activity {
     private long id;
 
     @Column(name = "user_id")
-    private UUID user_id;
+    private UUID user;
 
     @Column(name = "activity")
     private int activity;

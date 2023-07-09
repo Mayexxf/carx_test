@@ -1,10 +1,13 @@
 package com.example.carx_test.controllers;
 
+import com.example.carx_test.models.User;
 import com.example.carx_test.models.UserDTO;
 import com.example.carx_test.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -30,5 +33,11 @@ public class UserController {
         userService.setJsonUser(data, uuid);
         return ResponseEntity.ok("Data received successfully");
     }
+
+//    @GetMapping("/analytic")
+//    @ResponseBody
+//    public List<String> findUsersWithMaxMoneyByCountry(@RequestParam("limit") int limit){
+//        return userService.getUsersWithMaxMoneyByCountry(limit);
+//    }
 
 }
