@@ -1,16 +1,16 @@
 package com.example.carx_test.models;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "activity")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Activity {
@@ -20,13 +20,13 @@ public class Activity {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", columnDefinition = "uuid")
     private UUID user;
 
     @Column(name = "activity")
     private int activity;
 
     @Column(name = "activity_date")
-    private ZonedDateTime activity_date;
+    private ZonedDateTime activityDate;
 
 }

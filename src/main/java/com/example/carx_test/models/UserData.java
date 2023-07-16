@@ -10,7 +10,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO implements Serializable {
+public class UserData implements Serializable {
 
     private int money;
     private String country;

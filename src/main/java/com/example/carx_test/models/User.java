@@ -2,11 +2,11 @@ package com.example.carx_test.models;
 import javax.persistence.*;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import com.vladmihalcea.hibernate.type.json.JsonType;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Entity
@@ -25,5 +25,8 @@ public class User {
 
     @Column(name = "user_data", columnDefinition = "jsonb")
     @Type(type = "jsonb")
-    private UserDTO  user_data;
+    private UserData user_data;
+
+    @Column(name = "date_create")
+    private ZonedDateTime date_create;
 }

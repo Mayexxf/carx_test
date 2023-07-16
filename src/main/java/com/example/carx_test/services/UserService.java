@@ -1,16 +1,13 @@
 package com.example.carx_test.services;
 
-import com.example.carx_test.models.User;
-import com.example.carx_test.models.UserDTO;
+import com.example.carx_test.models.UserData;
 import com.example.carx_test.repositories.UserRepositories;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,11 +22,11 @@ public class UserService {
     }
 
 
-    public String getJsonUser(String uuid) {
-        UUID uuidUser = UUID.fromString(uuid);
+    public String getJsonUser(UUID uuid) {
 
+//        UUID uuidUser = UUID.fromString(uuid);
         ObjectMapper objectMapper = new ObjectMapper();
-        return userRepositories.findUserById(uuidUser).map(user -> {
+        return userRepositories.findUserById(uuid).map(user -> {
             try {
                 return objectMapper.writeValueAsString(user.getUser_data());
             } catch (JsonProcessingException e) {
@@ -39,7 +36,7 @@ public class UserService {
         }).orElse(null);
     }
 
-    public void setJsonUser(UserDTO data, String uuid) {
+    public void setJsonUser(UserData data, String uuid) {
 
         UUID uuidUser = UUID.fromString(uuid);
         userRepositories.findUserById(uuidUser).ifPresent(user -> {
@@ -48,8 +45,4 @@ public class UserService {
         });
 
     }
-
-//    public List<String> getUsersWithMaxMoneyByCountry(int limit){
-//        return userRepositories.findUsersWithMaxMoneyByCountry(limit);
-//    }
 }
